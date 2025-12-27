@@ -13,9 +13,17 @@ import java.util.List;
 public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
 
     private List<Note> notes;
+    private OnNoteClickListener listener;
 
-    public NoteAdapter(List<Note> notes) {
+    // Interface untuk click item
+    public interface OnNoteClickListener {
+        void onNoteClick(Note note);
+    }
+
+    // Constructor dengan listener (INI YANG DIPAKAI)
+    public NoteAdapter(List<Note> notes, OnNoteClickListener listener) {
         this.notes = notes;
+        this.listener = listener;
     }
 
     @NonNull
@@ -31,6 +39,12 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         Note note = notes.get(position);
         holder.tvTitle.setText(note.getTitle());
         holder.tvContent.setText(note.getContent());
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onNoteClick(note);
+            }
+        });
     }
 
     @Override
@@ -41,7 +55,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvContent;
 
-        ViewHolder(View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvContent = itemView.findViewById(R.id.tvContent);

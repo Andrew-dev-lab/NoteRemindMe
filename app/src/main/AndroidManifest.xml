@@ -8,7 +8,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteRemindMe">
         <activity
-            android:name=".NoteAdapter"
+            android:name=".EditNoteActivity"
             android:exported="false" />
         <!-- Main screen -->
         <activity
@@ -19,7 +19,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Add Note screen -->
+        </activity> <!-- Add Note -->
         <activity
             android:name=".AddNoteActivity"
             android:exported="false" />

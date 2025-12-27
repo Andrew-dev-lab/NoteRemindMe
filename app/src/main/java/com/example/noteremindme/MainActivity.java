@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.io.Serializable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,7 +44,12 @@ public class MainActivity extends AppCompatActivity {
                             .getAllNotes();
 
             runOnUiThread(() -> {
-                rvNotes.setAdapter(new NoteAdapter(notes));
+                rvNotes.setAdapter(new NoteAdapter(notes, note -> {
+                    Intent intent =
+                            new Intent(MainActivity.this, EditNoteActivity.class);
+                    intent.putExtra("note", (Serializable) note);
+                    startActivity(intent);
+                }));
             });
         }).start();
     }
