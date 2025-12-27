@@ -20,14 +20,6 @@
         android:hint="Description"
         android:textColor="#757575" />
 
-    <EditText
-        android:id="@+id/etContent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="top"
-        android:hint="Content" />
-
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"

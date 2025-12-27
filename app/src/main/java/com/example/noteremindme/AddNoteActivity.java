@@ -31,7 +31,7 @@ public class AddNoteActivity extends AppCompatActivity {
         String content = etContent.getText().toString().trim();
 
         if (TextUtils.isEmpty(title)) {
-            Toast.makeText(this, "Silakan masukkan judul", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter Title", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -42,7 +42,6 @@ public class AddNoteActivity extends AppCompatActivity {
             note.setContent(content);
             note.setSummary("");
 
-            // Simpan ke Database
             AppDatabase.getInstance(getApplicationContext()).noteDao().insert(note);
 
             runOnUiThread(() -> {

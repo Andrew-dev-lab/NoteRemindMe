@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class EditNoteActivity extends AppCompatActivity {
 
-    private EditText etTitle, etDescription, etContent;
+    private EditText etTitle, etDescription;
     private Button btnUpdate;
     private Note note;
 
@@ -23,7 +23,6 @@ public class EditNoteActivity extends AppCompatActivity {
         // 1. Inisialisasi View
         etTitle = findViewById(R.id.etTitle);
         etDescription = findViewById(R.id.etDescription);
-        etContent = findViewById(R.id.etContent);
         btnUpdate = findViewById(R.id.btnUpdate);
 
         // 2. Ambil data Note dari Intent
@@ -33,7 +32,6 @@ public class EditNoteActivity extends AppCompatActivity {
         if (note != null) {
             etTitle.setText(note.getTitle());
             etDescription.setText(note.getDescription());
-            etContent.setText(note.getContent());
         }
 
         btnUpdate.setOnClickListener(v -> updateNote());
@@ -63,7 +61,6 @@ public class EditNoteActivity extends AppCompatActivity {
 
         note.setTitle(etTitle.getText().toString());
         note.setDescription(etDescription.getText().toString());
-        note.setContent(etContent.getText().toString());
 
         AsyncTask.execute(() -> {
             AppDatabase.getInstance(this).noteDao().update(note);

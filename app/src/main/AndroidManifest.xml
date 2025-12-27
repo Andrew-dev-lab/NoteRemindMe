@@ -8,9 +8,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoteRemindMe">
         <activity
-            android:name=".EditNoteActivity"
+            android:name=".ViewContentActivity"
             android:exported="false" />
-        <!-- Main screen -->
+        <activity
+            android:name=".EditNoteActivity"
+            android:exported="false" /> <!-- Main screen -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
