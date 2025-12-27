@@ -3,13 +3,10 @@ package com.example.noteremindme;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 
 public class AddNoteActivity extends AppCompatActivity {
     private EditText etTitle, etDescription, etContent;
@@ -25,12 +22,7 @@ public class AddNoteActivity extends AppCompatActivity {
         etContent = findViewById(R.id.etContent);
         btnSave = findViewById(R.id.btnSave);
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveNote();
-            }
-        });
+        btnSave.setOnClickListener(v -> saveNote());
     }
 
     private void saveNote() {
@@ -39,29 +31,24 @@ public class AddNoteActivity extends AppCompatActivity {
         String content = etContent.getText().toString().trim();
 
         if (TextUtils.isEmpty(title)) {
-            Toast.makeText(this, "Please enter title", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Silakan masukkan judul", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Insert to Room DB on background thread
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                Note note = new Note();
-                note.setTitle(title);
-                note.setContent(content);
-                note.setSummary(""); // optional, for future AI summary
+        AsyncTask.execute(() -> {
+            Note note = new Note();
+            note.setTitle(title);
+            note.setDescription(description);
+            note.setContent(content);
+            note.setSummary("");
 
-                long id = AppDatabase.getInstance(getApplicationContext()).noteDao().insert(note);
+            // Simpan ke Database
+            AppDatabase.getInstance(getApplicationContext()).noteDao().insert(note);
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(AddNoteActivity.this, "Note saved", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                });
-            }
+            runOnUiThread(() -> {
+                Toast.makeText(AddNoteActivity.this, "Note Saved", Toast.LENGTH_SHORT).show();
+                finish();
+            });
         });
     }
 }
