@@ -20,12 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-<<<<<<< HEAD
-        // Inisialisasi tombol tambah dan RecyclerView
-        Button btnAddNote = findViewById(R.id.btnAddNote);
-=======
         FloatingActionButton btnAddNote = findViewById(R.id.btnAddNote);
->>>>>>> 10a77d2b9da1c9aa251d8320fbdb92f9401ca9b2
         rvNotes = findViewById(R.id.rvNotes);
 
         rvNotes.setLayoutManager(new LinearLayoutManager(this));
