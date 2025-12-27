@@ -2,7 +2,7 @@ package com.example.noteremindme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnAddNote = findViewById(R.id.btnAddNote);
+        FloatingActionButton btnAddNote = findViewById(R.id.btnAddNote);
         rvNotes = findViewById(R.id.rvNotes);
 
         rvNotes.setLayoutManager(new LinearLayoutManager(this));
