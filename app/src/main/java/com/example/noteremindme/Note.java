@@ -13,6 +13,7 @@ public class Note implements Serializable {
     private String description;
     private String content;
     private String summary;
+    private long reminderTimestamp;
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -28,4 +29,7 @@ public class Note implements Serializable {
 
     public String getSummary() { return summary; }
     public void setSummary(String summary) { this.summary = summary; }
+
+    public long getReminderTimestamp() { return reminderTimestamp; }
+    public void setReminderTimestamp(long reminderTimestamp) { this.reminderTimestamp = reminderTimestamp; }
 }
