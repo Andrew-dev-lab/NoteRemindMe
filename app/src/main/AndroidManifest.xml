@@ -9,7 +9,10 @@
     android:supportsRtl="true"
     android:theme="@style/Theme.NoteRemindMe">
 
-    <activity android:name=".ViewContentActivity" android:exported="false" />
+    <activity
+        android:name=".ViewContentActivity"
+        android:windowSoftInputMode="adjustResize">
+    </activity>
     <activity android:name=".EditNoteActivity" android:exported="false" />
     <activity android:name=".MainActivity" android:exported="true">
         <intent-filter>

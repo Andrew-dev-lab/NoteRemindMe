@@ -8,8 +8,10 @@ import android.content.Intent;
 import java.util.Calendar;
 import java.util.List;
 
+import android.text.Editable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ImageButton;
@@ -21,6 +23,7 @@ public class ViewContentActivity extends AppCompatActivity {
     private EditText etContent;
     private TextView tvViewTitle;
     private ImageButton btnSetReminder;
+    private Button btnBullet;
     private Note note;
 
     @Override
@@ -31,6 +34,7 @@ public class ViewContentActivity extends AppCompatActivity {
         etContent = findViewById(R.id.etContent);
         tvViewTitle = findViewById(R.id.tvViewTitle);
         btnSetReminder = findViewById(R.id.btnSetReminder);
+        btnBullet = findViewById(R.id.btnBullet);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
             if (checkSelfPermission(android.Manifest.permission.POST_NOTIFICATIONS) !=
@@ -50,6 +54,7 @@ public class ViewContentActivity extends AppCompatActivity {
             displayNote();
         }
 
+        btnBullet.setOnClickListener(v -> insertBullet());
         btnSetReminder.setOnClickListener(v -> showTimePicker());
     }
 
@@ -88,6 +93,22 @@ public class ViewContentActivity extends AppCompatActivity {
                 AppDatabase.getInstance(this).noteDao().update(note);
             });
         }
+    }
+
+    private void insertBullet() {
+        int start = etContent.getSelectionStart();
+        int end = etContent.getSelectionEnd();
+
+        // Simplest Markdown bullet: asterisk and a space
+        String bullet = "\n* ";
+
+        // If the EditText is empty or cursor is at the start, don't add a newline
+        if (start == 0) {
+            bullet = "* ";
+        }
+
+        Editable editable = etContent.getText();
+        editable.replace(Math.min(start, end), Math.max(start, end), bullet);
     }
 
     private void showTimePicker() {

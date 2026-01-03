@@ -2,43 +2,66 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="?android:attr/windowBackground"> <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="?attr/colorPrimary"
-    android:elevation="4dp"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?android:attr/windowBackground"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvViewTitle"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/btnSetReminder"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="?attr/colorOnPrimary" /> <ImageButton
-    android:id="@+id/btnSetReminder"
-    android:layout_width="48dp"
-    android:layout_height="48dp"
-    android:layout_alignParentEnd="true"
-    android:layout_centerVertical="true"
-    android:background="?attr/selectableItemBackgroundBorderless"
-    android:src="@android:drawable/ic_popup_reminder"
-    android:tint="?attr/colorOnPrimary"
-    android:contentDescription="Set Alarm" />
-</RelativeLayout>
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/btnSetReminder"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btnSetReminder"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Set Alarm"
+            android:src="@android:drawable/ic_popup_reminder"
+            app:tint="?attr/colorOnPrimary" />
+    </RelativeLayout>
 
     <EditText
         android:id="@+id/etContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="top"
         android:padding="16dp"
         android:background="@null"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/keyboardToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#EEEEEE"
+        android:padding="4dp"
+        android:elevation="8dp">
+
+        <Button
+            android:id="@+id/btnBullet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="• Bullet"
+            style="@style/Widget.MaterialComponents.Button.TextButton"/>
+    </LinearLayout>
 
 </LinearLayout>
