@@ -10,6 +10,8 @@ constraintlayout = "2.2.1"
 recyclerview = "1.4.0"
 roomCommonJvm = "2.8.4"
 roomRuntimeAndroid = "2.8.4"
+editor = "4.6.2"
+core = "4.6.2"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -22,6 +24,8 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
+editor = { group = "io.noties.markwon", name = "editor", version.ref = "editor" }
+core = { group = "io.noties.markwon", name = "core", version.ref = "core" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
