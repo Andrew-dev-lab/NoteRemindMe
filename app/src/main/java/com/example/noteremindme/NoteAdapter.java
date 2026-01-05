@@ -40,18 +40,19 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.ViewHolder> {
         holder.tvTitle.setText(note.getTitle());
         holder.tvDescription.setText(note.getDescription());
 
-        // Klik pada titik tiga
         holder.itemView.setOnClickListener(v -> {
             listener.onItemClick(note);
         });
 
-// 2. Klik Menu Titik Tiga untuk Edit Judul
         holder.ivMenuMore.setOnClickListener(v -> {
             PopupMenu popup = new PopupMenu(v.getContext(), holder.ivMenuMore);
             popup.inflate(R.menu.item_menu);
             popup.setOnMenuItemClickListener(item -> {
                 if (item.getItemId() == R.id.menu_edit) {
-                    listener.onEdit(note); // Ini lari ke EditNoteActivity
+                    listener.onEdit(note);
+                    return true;
+                } else if (item.getItemId() == R.id.menu_delete) { // Add this block
+                    listener.onDelete(note);
                     return true;
                 }
                 return false;

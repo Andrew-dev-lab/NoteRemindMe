@@ -20,15 +20,12 @@ public class EditNoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
 
-        // 1. Inisialisasi View
         etTitle = findViewById(R.id.etTitle);
         etDescription = findViewById(R.id.etDescription);
         btnUpdate = findViewById(R.id.btnUpdate);
 
-        // 2. Ambil data Note dari Intent
         note = (Note) getIntent().getSerializableExtra("note");
 
-        // 3. Tampilkan data jika note tersedia
         if (note != null) {
             etTitle.setText(note.getTitle());
             etDescription.setText(note.getDescription());
@@ -36,8 +33,6 @@ public class EditNoteActivity extends AppCompatActivity {
 
         btnUpdate.setOnClickListener(v -> updateNote());
     }
-
-    // --- MENU UNTUK DELETE ---
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -53,8 +48,6 @@ public class EditNoteActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    // --- LOGIKA DATABASE ---
 
     private void updateNote() {
         if (note == null) return;
